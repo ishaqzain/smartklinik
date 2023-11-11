@@ -19,6 +19,7 @@ class _LoginState extends State<Login> {
       body: SingleChildScrollView(
         child: SafeArea(
           child: Container(
+            padding: const EdgeInsets.all(48),
             height: MediaQuery.of(context).size.height,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:smartklinik/ui/beranda.dart';
-import 'package:smartklinik/ui/pegawai/pegawai_page.dart';
-import 'package:smartklinik/ui/pasien/pasien_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +13,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: "Smart Klinik",
       debugShowCheckedModeBanner: false,
-      home: PegawaiPage(),
+      home: Beranda(),
     );
   }
 }

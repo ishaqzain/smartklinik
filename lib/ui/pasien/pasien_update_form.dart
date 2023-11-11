@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:smartklinik/model/pasien.dart';
 import 'package:smartklinik/ui/pasien/pasien_detail.dart';
 
-class PasienForm extends StatefulWidget {
-  const PasienForm({super.key});
+class PasienUpdateForm extends StatefulWidget {
+  final Pasien pasien;
+  const PasienUpdateForm({super.key, required this.pasien});
   @override
-  State<PasienForm> createState() => _PasienFormState();
+  State<PasienUpdateForm> createState() => _PasienUpdateForm();
 }
 
-class _PasienFormState extends State<PasienForm> {
+class _PasienUpdateForm extends State<PasienUpdateForm> {
   final _formKey = GlobalKey<FormState>();
   final _noRmCtrl = TextEditingController();
   final _namaCtrl = TextEditingController();
@@ -16,12 +17,23 @@ class _PasienFormState extends State<PasienForm> {
   final _noTlpCtrl = TextEditingController();
   final _alamatCtrl = TextEditingController();
 
+  void iniSate() {
+    super.initState();
+    setState(() {
+      _noRmCtrl.text = widget.pasien.nomorRm;
+      _namaCtrl.text = widget.pasien.nama;
+      _tglLahirCtrl.text = widget.pasien.tanggalLahir;
+      _noTlpCtrl.text = widget.pasien.nomorTelepon;
+      _alamatCtrl.text = widget.pasien.alamat;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Tambah Data Pasien'),),
+        appBar: AppBar(title: const Text('Ubah Data Pasien'),),
         body: SingleChildScrollView(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Form(
             key: _formKey,
             child: Column(
@@ -56,17 +68,17 @@ class _PasienFormState extends State<PasienForm> {
     return ElevatedButton(
         onPressed: () {
           Pasien pasien = Pasien(
-              nomorRm: _noRmCtrl.text,
-              nama: _namaCtrl.text,
-              tanggalLahir: _tglLahirCtrl.text,
-              nomorTelepon: _noTlpCtrl.text,
-              alamat: _alamatCtrl.text,
+            nomorRm: _noRmCtrl.text,
+            nama: _namaCtrl.text,
+            tanggalLahir: _tglLahirCtrl.text,
+            nomorTelepon: _noTlpCtrl.text,
+            alamat: _alamatCtrl.text,
           );
           Navigator.pushReplacement(context,
               MaterialPageRoute(builder: (context) => PasienDetail(pasien: pasien))
           );
         },
-        child: const Text("Simpan")
+        child: const Text("Simpan Perubahan")
     );
   }
 }
