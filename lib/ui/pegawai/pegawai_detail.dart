@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smartklinik/model/pegawai.dart';
+import 'package:smartklinik/ui/pegawai/pegawai_page.dart';
+import 'package:smartklinik/ui/pegawai/pegawai_update_form.dart';
 
 class PegawaiDetail extends StatefulWidget {
   final Pegawai pegawai;
@@ -39,20 +41,66 @@ class _PegawaiDetailState extends State<PegawaiDetail> {
           Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.green ),
-                  child: const Text('Ubah'),
-                ),
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.red ),
-                  child: const Text('Hapus'),
-                ),
+                _tombolUbah(),
+                _tombolHapus()
               ]
           )
         ],
       ),
+    );
+  }
+  // tombol ubah
+  _tombolUbah() {
+    return ElevatedButton(
+      onPressed: () {
+        Navigator.push( context,
+            MaterialPageRoute(builder: (context) =>
+                PegawaiUpdateForm(pegawai: widget.pegawai)
+            )
+        );
+      },
+      style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.green
+      ),
+      child: const Text("Ubah"),
+    );
+  }
+  // tombol hapus
+  _tombolHapus(){
+    return ElevatedButton(
+      onPressed: () {
+        AlertDialog alertDialog = AlertDialog(
+          content: const Text("Yakin ingin menghapus data ini?"),
+          actions: [
+            ElevatedButton(
+              onPressed: (){
+                Navigator.pop(context);
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => const PegawaiPage())
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red
+              ),
+              child: const Text("YA"),
+            ),
+            ElevatedButton(
+              onPressed: (){
+                Navigator.pop(context);
+              },
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green
+              ),
+              child: const Text("Tidak"),
+            )
+          ],
+        );
+        showDialog(context: context, builder: (context) => alertDialog);
+      },
+      style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.red
+      ),
+      child: const Text("Hapus"),
     );
   }
 }

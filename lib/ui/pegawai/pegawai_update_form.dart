@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:smartklinik/model/pegawai.dart';
 import 'package:smartklinik/ui/pegawai/pegawai_detail.dart';
 
-class PegawaiForm extends StatefulWidget {
-  const PegawaiForm({super.key});
+class PegawaiUpdateForm extends StatefulWidget {
+  final Pegawai pegawai;
+  const PegawaiUpdateForm({super.key, required this.pegawai});
+
   @override
-  State<PegawaiForm> createState() => _PegawaiFormState();
+  State<PegawaiUpdateForm> createState() => _PegawaiUpdateFormState();
 }
 
-class _PegawaiFormState extends State<PegawaiForm> {
+class _PegawaiUpdateFormState extends State<PegawaiUpdateForm> {
   final _formKey = GlobalKey<FormState>();
   final _nipCtrl = TextEditingController();
   final _namaCtrl = TextEditingController();
@@ -17,10 +19,22 @@ class _PegawaiFormState extends State<PegawaiForm> {
   final _emailCtrl = TextEditingController();
   final _passCtrl = TextEditingController();
 
+  void iniSate() {
+    super.initState();
+    setState(() {
+      _nipCtrl.text = widget.pegawai.nip;
+      _namaCtrl.text = widget.pegawai.nama;
+      _tglLahirCtrl.text = widget.pegawai.tanggalLahir;
+      _telpCtrl.text = widget.pegawai.nomorTelepon;
+      _emailCtrl.text = widget.pegawai.email;
+      _passCtrl.text = widget.pegawai.password;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Tambah Data Pegawai'),),
+        appBar: AppBar(title: const Text('Ubah Data Pegawai'),),
         body: SingleChildScrollView(
           padding: const EdgeInsets.all(16),
           child: Form(
@@ -59,18 +73,18 @@ class _PegawaiFormState extends State<PegawaiForm> {
     return ElevatedButton(
         onPressed: () {
           Pegawai pegawai = Pegawai(
-            nip: _nipCtrl.text,
-            nama: _namaCtrl.text,
-            tanggalLahir: _tglLahirCtrl.text,
-            nomorTelepon: _telpCtrl.text,
-            email: _emailCtrl.text,
-            password: _passCtrl.text
+              nip: _nipCtrl.text,
+              nama: _namaCtrl.text,
+              tanggalLahir: _tglLahirCtrl.text,
+              nomorTelepon: _telpCtrl.text,
+              email: _emailCtrl.text,
+              password: _passCtrl.text
           );
           Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => PegawaiDetail(pegawai: pegawai))
+              MaterialPageRoute(builder: (context) => PegawaiDetail(pegawai: pegawai))
           );
         },
-        child: const Text("Simpan")
+        child: const Text("Simpan Perubahan")
     );
   }
 }

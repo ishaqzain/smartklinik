@@ -17,6 +17,7 @@ class _PoliFormState extends State<PoliForm> {
     return Scaffold(
       appBar: AppBar(title: const Text('Tambah poli'),),
       body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
         child: Form(
           key: _formKey,
           child: Column(

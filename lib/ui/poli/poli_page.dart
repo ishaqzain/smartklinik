@@ -16,25 +16,33 @@ class _PoliPageState extends State<PoliPage> {
       drawer: const Sidebar(),
       appBar: AppBar(
         title: const Text("Data Poli"),
-        actions: [
-          GestureDetector(
-            child: const Icon(Icons.add),
-            onTap: (){
-              Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const PoliForm())
-              );
-            },
-          )
+        actions: <Widget>[
+          Padding(
+              padding: const EdgeInsets.only(right: 16.0),
+              child: GestureDetector(
+                onTap: (){
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const PoliForm())
+                  );
+                },
+                child: const Icon(
+                  Icons.add,
+                ),
+              )
+          ),
         ],
       ),
-      body: ListView(
-        children:[
-          PoliItem(poli: Poli(namaPoli: "Poli Anak")),
-          PoliItem(poli: Poli(namaPoli: "Poli Kandungan")),
-          PoliItem(poli: Poli(namaPoli: "Poli Gigi")),
-          PoliItem(poli: Poli(namaPoli: "Poli THT")),
-        ],
-      ),
+      body: Container(
+        padding: const EdgeInsets.all(16),
+        child: ListView(
+          children:[
+            PoliItem(poli: Poli(namaPoli: "Poli Anak")),
+            PoliItem(poli: Poli(namaPoli: "Poli Kandungan")),
+            PoliItem(poli: Poli(namaPoli: "Poli Gigi")),
+            PoliItem(poli: Poli(namaPoli: "Poli THT")),
+          ],
+        ),
+      )
     );
   }
 }

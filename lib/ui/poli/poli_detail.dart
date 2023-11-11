@@ -16,22 +16,25 @@ class _PoliDetailState extends State<PoliDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Detail Poli"),),
-      body: Column(
-        children: [
-          const SizedBox(height: 20,),
-          Text("Nama Poli: ${widget.poli.namaPoli}",
-            style: const TextStyle(fontSize: 20),
-          ),
-          const SizedBox(height:20 ,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              _tombolUbah(),
-              _tombolHapus()
-            ]
-          )
-        ],
-      ),
+      body: Container(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            const SizedBox(height: 20,),
+            Text("Nama Poli: ${widget.poli.namaPoli}",
+              style: const TextStyle(fontSize: 20),
+            ),
+            const SizedBox(height:20 ,),
+            Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _tombolUbah(),
+                  _tombolHapus()
+                ]
+            )
+          ],
+        ),
+      )
     );
   }
   // tombol ubah

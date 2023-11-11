@@ -26,6 +26,7 @@ class _PoliUpdateFormState extends State<PoliUpdateForm> {
     return Scaffold(
       appBar: AppBar(title: const Text('Ubah Poli'),),
       body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
         child: Form(
           key: _formKey,
           child: Column(

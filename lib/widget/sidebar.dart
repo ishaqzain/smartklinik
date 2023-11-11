@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:smartklinik/ui/beranda.dart';
 import 'package:smartklinik/ui/login.dart';
+import 'package:smartklinik/ui/pasien/pasien_page.dart';
+import 'package:smartklinik/ui/pegawai/pegawai_page.dart';
 import 'package:smartklinik/ui/poli/poli_page.dart';
 
 class Sidebar extends StatelessWidget {
@@ -31,22 +33,36 @@ class Sidebar extends StatelessWidget {
             leading: const Icon(Icons.accessible) ,
             title: const Text('Poli'),
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder:
-                      (context) => const PoliPage()));
+              Navigator.push(
+                context, MaterialPageRoute(
+                  builder:(context) => const PoliPage()
+                )
+              );
             },
           ),
           // pasien
           ListTile(
             leading: const Icon(Icons.account_box_sharp) ,
             title: const Text('Pasien'),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context, MaterialPageRoute(
+                  builder:(context) => const PasienPage()
+                )
+              );
+            },
           ),
           // pegawai
           ListTile(
             leading: const Icon(Icons.people) ,
             title: const Text('Pegawai'),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context, MaterialPageRoute(
+                  builder:(context) => const PegawaiPage()
+                )
+              );
+            },
           ),
           // keluar
           ListTile(
