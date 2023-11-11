@@ -13,7 +13,7 @@ class _PoliPageState extends State<PoliPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const SideBar(),
+      drawer: const Sidebar(),
       appBar: AppBar(
         title: const Text("Data Poli"),
         actions: [
