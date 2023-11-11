@@ -14,7 +14,6 @@ class _PoliUpdateFormState extends State<PoliUpdateForm> {
   final _formKey = GlobalKey<FormState>();
   final _namPoliCtrl = TextEditingController();
 
-  @override
   void iniSate() {
     super.initState();
     setState(() {
@@ -25,7 +24,7 @@ class _PoliUpdateFormState extends State<PoliUpdateForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Tambah poli'),),
+      appBar: AppBar(title: const Text('Ubah Poli'),),
       body: SingleChildScrollView(
         child: Form(
           key: _formKey,
