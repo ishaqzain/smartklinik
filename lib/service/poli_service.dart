@@ -9,6 +9,7 @@ class PoliService {
     List<Poli> result = data.map((json) => Poli.fromJson(json)).toList();
     return result;
   }
+
   Future<Poli> simpan(Poli poli) async {
     var data = poli.toJson();
     final Response response = await ApiClient().post('poli', data);
