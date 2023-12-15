@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smartklinik/model/poli.dart';
 import 'package:smartklinik/ui/poli/poli_detail.dart';
+import 'package:smartklinik/service/poli_service.dart';
 
 class PoliUpdateForm extends StatefulWidget {
   final Poli poli;
@@ -10,16 +11,24 @@ class PoliUpdateForm extends StatefulWidget {
   State<PoliUpdateForm> createState() => _PoliUpdateFormState();
 }
 
-
 class _PoliUpdateFormState extends State<PoliUpdateForm> {
 
-  final _formKey = GlobalKey<FormState>();
-  final _namPoliCtrl = TextEditingController();
+  Future<Poli> getData() async {
+    Poli data = await PoliService().getById(widget.poli.id.toString());
+    setState(() {
+      _namaPoliCtrl.text = data.namaPoli;
+    });
+    return data;
+  }
 
+  final _formKey = GlobalKey<FormState>();
+  final _namaPoliCtrl = TextEditingController();
+
+  @override
   void iniSate() {
     super.initState();
     setState(() {
-      _namPoliCtrl.text = widget.poli.namaPoli;
+      _namaPoliCtrl.text = widget.poli.namaPoli;
     });
   }
 
@@ -33,7 +42,7 @@ class _PoliUpdateFormState extends State<PoliUpdateForm> {
           key: _formKey,
           child: Column(
             children: [
-              _fieldNamaPoli("Nama Poli", _namPoliCtrl),
+              _fieldNamaPoli("Nama Poli", _namaPoliCtrl),
               const SizedBox(height: 20,),
               _tombolSimpan()
             ],
@@ -42,6 +51,8 @@ class _PoliUpdateFormState extends State<PoliUpdateForm> {
       ),
     );
   }
+
+
   // text field
   _fieldNamaPoli (String label, TextEditingController Ctrl) {
     return TextField(
@@ -49,17 +60,21 @@ class _PoliUpdateFormState extends State<PoliUpdateForm> {
       controller: Ctrl,
     );
   }
-  
+
   // tombol simpan
   _tombolSimpan() {
     return ElevatedButton(
-      onPressed: () {
-        Poli poli = Poli(namaPoli: _namPoliCtrl.text);
-        Navigator.pushReplacement(context,
-         MaterialPageRoute(builder: (context) => PoliDetail(poli: poli))
-        );
-      }, 
-      child: const Text("Simpan Perubahan")
-    );
+        onPressed: () async {
+          Poli poli = Poli(namaPoli: _namaPoliCtrl.text);
+          String id = widget.poli.id.toString();
+          await PoliService().ubah(poli, id).then((value) {
+            Navigator.pop(context);
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => PoliDetail(poli: value)));
+          });
+        },
+        child: const Text("Simpan Perubahan"));
   }
 }

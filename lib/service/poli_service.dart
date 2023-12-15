@@ -21,7 +21,7 @@ class PoliService {
   Future<Poli> ubah(Poli poli, String id) async {
     var data = poli.toJson();
     final Response response = await ApiClient().put('poli/${id}?key=123', data);
-    print(response);
+    print(response.data['data']);
     Poli result = Poli.fromJson(response.data['data']);
     return result;
   }
