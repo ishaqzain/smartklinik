@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:smartklinik/model/poli.dart';
 import 'package:smartklinik/ui/poli/poli_form.dart';
 import 'package:smartklinik/ui/poli/poli_item.dart';
-import 'package:smartklinik/ui/poli/poli_detail.dart';
 import 'package:smartklinik/widget/sidebar.dart';
 import 'package:smartklinik/service/poli_service.dart';
 
