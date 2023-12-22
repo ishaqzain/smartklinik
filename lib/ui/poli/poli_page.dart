@@ -57,6 +57,7 @@ class _PoliPageState extends State<PoliPage> {
               return const Text('Data Kosong');
             }
             return ListView.builder(
+                padding: const EdgeInsets.all(16),
                 itemCount: snapshot.data.length,
                 itemBuilder: (context, index){
                   return PoliItem(poli: snapshot.data[index]);

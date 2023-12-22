@@ -3,13 +3,21 @@ import 'package:smartklinik/model/pasien.dart';
 import 'package:smartklinik/ui/pasien/pasien_form.dart';
 import 'package:smartklinik/ui/pasien/pasien_item.dart';
 import 'package:smartklinik/widget/sidebar.dart';
+import 'package:smartklinik/service/pasien_service.dart';
 
 class PasienPage extends StatefulWidget {
   const PasienPage ({super.key});
   @override
   State<PasienPage> createState() => _PasienPageState();
 }
+
 class _PasienPageState extends State<PasienPage> {
+
+  Stream<List<Pasien>> getList() async* {
+    List<Pasien> data = await PasienService().listData();
+    yield data;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,24 +40,30 @@ class _PasienPageState extends State<PasienPage> {
           ),
         ],
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children:[
-          PasienItem(pasien: Pasien(
-            nomorRm:"203902",
-            nama: "Asep Mulyana",
-            tanggalLahir: "1 July 2000",
-            nomorTelepon: "0819394893",
-            alamat: "Tangerang - Banten",
-          )),
-          PasienItem(pasien: Pasien(
-            nomorRm:"203992",
-            nama: "Ayu Lestari",
-            tanggalLahir: "15 October 2000",
-            nomorTelepon: "0819394893",
-            alamat: "Bandung - Jawa Barat",
-          )),
-        ],
+      body: StreamBuilder(
+          stream: getList(),
+          builder: (context, AsyncSnapshot snapshot) {
+            print(getList());
+            if (snapshot.hasError) {
+              return Text(snapshot.error.toString());
+            }
+            if (snapshot.connectionState != ConnectionState.done) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            if (!snapshot.hasData && snapshot.connectionState ==
+                ConnectionState.done) {
+              return const Text('Data Kosong');
+            }
+            return ListView.builder(
+                padding: const EdgeInsets.all(16),
+                itemCount: snapshot.data.length,
+                itemBuilder: (context, index){
+                  return PasienItem(pasien: snapshot.data[index]);
+                }
+            );
+          }
       ),
     );
   }
