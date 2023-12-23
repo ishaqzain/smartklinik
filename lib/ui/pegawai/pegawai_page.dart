@@ -3,6 +3,7 @@ import 'package:smartklinik/model/pegawai.dart';
 import 'package:smartklinik/ui/pegawai/pegawai_form.dart';
 import 'package:smartklinik/ui/pegawai/pegawai_item.dart';
 import 'package:smartklinik/widget/sidebar.dart';
+import 'package:smartklinik/service/pegawai_service.dart';
 
 class PegawaiPage extends StatefulWidget {
   const PegawaiPage ({super.key});
@@ -10,6 +11,12 @@ class PegawaiPage extends StatefulWidget {
   State<PegawaiPage> createState() => _PegawaiPageState();
 }
 class _PegawaiPageState extends State<PegawaiPage> {
+
+  Stream<List<Pegawai>> getList() async* {
+    List<Pegawai> data = await PegawaiService().listData();
+    yield data;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,26 +39,30 @@ class _PegawaiPageState extends State<PegawaiPage> {
           ),
         ],
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children:[
-          PegawaiItem(pegawai: Pegawai(
-            nip:"09209390293",
-            nama: "Budi Sudarsono",
-            tanggalLahir: "1 July 2000",
-            nomorTelepon: "0819394893",
-            email: "budi@gmail.com",
-            password: "9930393124abc",
-          )),
-          PegawaiItem(pegawai: Pegawai(
-            nip:"09209390293",
-            nama: "Susi Susanti",
-            tanggalLahir: "3 September 1988",
-            nomorTelepon: "08291992920",
-            email: "susi.susanti@gmail.com",
-            password: "abcd123",
-          )),
-        ],
+      body: StreamBuilder(
+          stream: getList(),
+          builder: (context, AsyncSnapshot snapshot) {
+            print(getList());
+            if (snapshot.hasError) {
+              return Text(snapshot.error.toString());
+            }
+            if (snapshot.connectionState != ConnectionState.done) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            if (!snapshot.hasData && snapshot.connectionState ==
+                ConnectionState.done) {
+              return const Text('Data Kosong');
+            }
+            return ListView.builder(
+                padding: const EdgeInsets.all(16),
+                itemCount: snapshot.data.length,
+                itemBuilder: (context, index){
+                  return PegawaiItem(pegawai: snapshot.data[index]);
+                }
+            );
+          }
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smartklinik/model/pegawai.dart';
+import 'package:smartklinik/service/pegawai_service.dart';
 import 'package:smartklinik/ui/pegawai/pegawai_detail.dart';
 
 class PegawaiForm extends StatefulWidget {
@@ -13,7 +14,7 @@ class _PegawaiFormState extends State<PegawaiForm> {
   final _nipCtrl = TextEditingController();
   final _namaCtrl = TextEditingController();
   final _tglLahirCtrl = TextEditingController();
-  final _telpCtrl = TextEditingController();
+  final _noTlpCtrl = TextEditingController();
   final _emailCtrl = TextEditingController();
   final _passCtrl = TextEditingController();
 
@@ -33,7 +34,7 @@ class _PegawaiFormState extends State<PegawaiForm> {
                 const SizedBox(height: 16,),
                 _fieldNamePoli("Tanggal Lahir", _tglLahirCtrl),
                 const SizedBox(height: 16,),
-                _fieldNamePoli("No Telepon", _telpCtrl),
+                _fieldNamePoli("No Telepon", _noTlpCtrl),
                 const SizedBox(height: 16,),
                 _fieldNamePoli("Email", _emailCtrl),
                 const SizedBox(height: 16,),
@@ -57,18 +58,21 @@ class _PegawaiFormState extends State<PegawaiForm> {
   // btn save
   _tombolSimpan() {
     return ElevatedButton(
-        onPressed: () {
+        onPressed: () async {
           Pegawai pegawai = Pegawai(
             nip: _nipCtrl.text,
             nama: _namaCtrl.text,
             tanggalLahir: _tglLahirCtrl.text,
-            nomorTelepon: _telpCtrl.text,
+            nomorTelepon: _noTlpCtrl.text,
             email: _emailCtrl.text,
             password: _passCtrl.text
           );
-          Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => PegawaiDetail(pegawai: pegawai))
-          );
+          await PegawaiService().simpan(pegawai).then((value) {
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) =>
+                    PegawaiDetail(pegawai: value)));
+            print(value);
+          });
         },
         child: const Text("Simpan")
     );

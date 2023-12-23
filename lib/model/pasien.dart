@@ -5,6 +5,7 @@ class Pasien {
   String tanggalLahir;
   String nomorTelepon;
   String alamat;
+
   Pasien({
     this.id,
     required this.nomorRm,
@@ -24,7 +25,11 @@ class Pasien {
   );
 
   Map<String, dynamic> toJson() => {
+    "nomor_rm": nomorRm,
     "nama": nama,
+    "tanggal_lahir": tanggalLahir,
+    "nomor_telepon": nomorTelepon,
+    "alamat": alamat
   };
 }
 
