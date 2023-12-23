@@ -14,6 +14,7 @@ class PasienService {
   Future<Pasien> simpan(Pasien pasien) async {
     var data = pasien.toJson();
     final Response response = await ApiClient().post('pasien/?key=123', data);
+    print(response.data);
     Pasien result = Pasien.fromJson(response.data['data']);
     return result;
   }

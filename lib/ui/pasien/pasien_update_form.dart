@@ -1,15 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:smartklinik/model/pasien.dart';
 import 'package:smartklinik/ui/pasien/pasien_detail.dart';
+import 'package:smartklinik/service/pasien_service.dart';
 
 class PasienUpdateForm extends StatefulWidget {
   final Pasien pasien;
   const PasienUpdateForm({super.key, required this.pasien});
+
   @override
   State<PasienUpdateForm> createState() => _PasienUpdateForm();
 }
 
 class _PasienUpdateForm extends State<PasienUpdateForm> {
+
+  Future<Pasien> getData() async {
+    Pasien data = await PasienService().getById(widget.pasien.id.toString());
+    setState(() {
+      _namaCtrl.text = data.nama;
+    });
+    return data;
+  }
+
   final _formKey = GlobalKey<FormState>();
   final _noRmCtrl = TextEditingController();
   final _namaCtrl = TextEditingController();
@@ -63,10 +74,10 @@ class _PasienUpdateForm extends State<PasienUpdateForm> {
     );
   }
 
-  // btn save
+  // tombol simpan
   _tombolSimpan() {
     return ElevatedButton(
-        onPressed: () {
+        onPressed: () async {
           Pasien pasien = Pasien(
             nomorRm: _noRmCtrl.text,
             nama: _namaCtrl.text,
@@ -74,9 +85,14 @@ class _PasienUpdateForm extends State<PasienUpdateForm> {
             nomorTelepon: _noTlpCtrl.text,
             alamat: _alamatCtrl.text,
           );
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => PasienDetail(pasien: pasien))
-          );
+          String id = widget.pasien.id.toString();
+          await PasienService().ubah(pasien, id).then((value) {
+            Navigator.pop(context);
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => PasienDetail(pasien: value)));
+          });
         },
         child: const Text("Simpan Perubahan")
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smartklinik/model/pasien.dart';
+import 'package:smartklinik/service/pasien_service.dart';
 import 'package:smartklinik/ui/pasien/pasien_detail.dart';
 
 class PasienForm extends StatefulWidget {
@@ -54,17 +55,20 @@ class _PasienFormState extends State<PasienForm> {
   // btn save
   _tombolSimpan() {
     return ElevatedButton(
-        onPressed: () {
+        onPressed: () async {
           Pasien pasien = Pasien(
               nomorRm: _noRmCtrl.text,
               nama: _namaCtrl.text,
               tanggalLahir: _tglLahirCtrl.text,
               nomorTelepon: _noTlpCtrl.text,
-              alamat: _alamatCtrl.text,
+              alamat: _alamatCtrl.text
           );
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => PasienDetail(pasien: pasien))
-          );
+          await PasienService().simpan(pasien).then((value) {
+            Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) =>
+                PasienDetail(pasien: value)));
+            print(value);
+          });
         },
         child: const Text("Simpan")
     );

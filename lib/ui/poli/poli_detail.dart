@@ -67,9 +67,9 @@ class _PoliDetailState extends State<PoliDetail> {
                 MaterialPageRoute(builder: (context) =>
                     PoliUpdateForm(poli: snapshot.data)));
           },
-          child: const Text('Ubah'),
           style: ElevatedButton.styleFrom(
               backgroundColor: Colors.green),
+          child: const Text('Ubah'),
         )
     );
   }
