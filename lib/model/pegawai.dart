@@ -14,17 +14,17 @@ class Pegawai {
     required this.tanggalLahir,
     required this.nomorTelepon,
     required this.email,
-    required this.password
+    required this.password,
   });
 
   factory Pegawai.fromJson(Map<String, dynamic> json) => Pegawai(
-      id: json['id']?.toString() ?? '',
-      nip: json["nip"] ?? '',
-      nama: json["nama"] ?? '',
-      tanggalLahir: json["tanggalLahir"] ?? '',
-      nomorTelepon: json["nomorTelepon"] ?? '',
-      email: json["email"] ?? '',
-      password: json["password"] ?? ''
+      id: json['id'],
+      nip: json["nip"],
+      nama: json["nama"],
+      tanggalLahir: json["tanggal_lahir"],
+      nomorTelepon: json["nomor_telepon"],
+      email: json["email"],
+      password: json["password"]
   );
 
   Map<String, dynamic> toJson() => {
