@@ -16,8 +16,11 @@ class Sidebar extends StatelessWidget {
         children: [
           // logo user
           const UserAccountsDrawerHeader(
-              accountName: Text('Admin'),
-              accountEmail: Text('admin@admin.com')),
+            decoration: BoxDecoration(
+              color: Colors.teal, // Set the background color here
+            ),
+            accountName: Text('Admin'),
+            accountEmail: Text('admin@admin.com')),
           // home
           ListTile(
             leading: const Icon(Icons.home) ,

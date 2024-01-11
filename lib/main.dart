@@ -11,6 +11,12 @@ Future<void> main() async{
     title: "Klinik App",
     debugShowCheckedModeBanner: false,
     home: token == null ? const Login() : const Beranda(),
+    theme: ThemeData(
+      appBarTheme: const AppBarTheme(
+        color: Colors.teal, // Set the background color of the app bar
+        elevation: 0, // Set the elevation (shadow) of the app bar
+      ),
+    ),
   ));
 }
 
