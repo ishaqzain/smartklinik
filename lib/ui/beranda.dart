@@ -11,7 +11,6 @@ class Beranda extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
       drawer: const Sidebar(),
       appBar: AppBar(
         elevation: 0,
@@ -183,7 +182,7 @@ class Beranda extends StatelessWidget {
                                     fit: BoxFit.cover,
                                     colorFilter: ColorFilter.mode(
                                       Colors.teal.withOpacity(1),
-                                      BlendMode.hue,
+                                      BlendMode.overlay,
                                     ),
                                     image: const AssetImage(
                                         'assets/images/img-pasien.png')),
@@ -235,8 +234,8 @@ class Beranda extends StatelessWidget {
                                 image: DecorationImage(
                                     fit: BoxFit.cover,
                                     colorFilter: ColorFilter.mode(
-                                      Colors.teal.withOpacity(1),
-                                      BlendMode.hue,
+                                      Colors.teal.withOpacity(.8),
+                                      BlendMode.lighten,
                                     ),
                                     image: const AssetImage(
                                         'assets/images/img-pegawai.png')),
@@ -313,7 +312,7 @@ class Beranda extends StatelessWidget {
                                   child: Padding(
                                     padding: const EdgeInsets.all(15.0),
                                     child: Text(
-                                      'Jadwal Klinik',
+                                      'Data Obat',
                                       style: GoogleFonts.nunito(
                                         textStyle: const TextStyle(
                                           color: Colors.white,

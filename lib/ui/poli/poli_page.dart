@@ -23,6 +23,7 @@ class _PoliPageState extends State<PoliPage> {
     return Scaffold(
       drawer: const Sidebar(),
       appBar: AppBar(
+        backgroundColor: Colors.teal,
         title: const Text("Data Poli"),
         actions: <Widget>[
           Padding(

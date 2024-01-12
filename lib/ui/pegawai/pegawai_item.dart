@@ -10,8 +10,12 @@ class PegawaiItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.0), // Adjust the radius as needed
+        ),
         child: ListTile(
           title: Text(pegawai.nama),
+          subtitle: Text(pegawai.email),
         ),
       ),
       onTap: (){
