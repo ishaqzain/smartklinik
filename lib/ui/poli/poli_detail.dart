@@ -141,11 +141,12 @@ class _PoliDetailState extends State<PoliDetail> {
       },
       child: const Text('Delete'),
       style: ElevatedButton.styleFrom(
-          minimumSize: const Size(100.0, 40.0),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.0), // Adjust the radius as needed
-          ),
-          backgroundColor: Colors.red.shade900),
+        minimumSize: const Size(100.0, 40.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.0), // Adjust the radius as needed
+        ),
+        backgroundColor: Colors.red.shade900
+      ),
     );
   }
 }
