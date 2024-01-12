@@ -68,6 +68,7 @@ flutter:
     - assets/images/img-jadwal.png
     - assets/images/img-pasien.png
     - assets/images/img-pegawai.png
+    - assets/images/img-obat.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

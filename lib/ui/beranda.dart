@@ -244,7 +244,7 @@ class Beranda extends StatelessWidget {
                                     fit: BoxFit.cover,
                                     colorFilter: ColorFilter.mode(
                                       Colors.teal.withOpacity(.8),
-                                      BlendMode.lighten,
+                                      BlendMode.softLight,
                                     ),
                                     image: const AssetImage(
                                         'assets/images/img-pegawai.png')),
@@ -300,7 +300,7 @@ class Beranda extends StatelessWidget {
                                       BlendMode.hue,
                                     ),
                                     image: const AssetImage(
-                                        'assets/images/img-jadwal.png')),
+                                        'assets/images/img-obat.png')),
                               ),
                               child: Container(
                                 decoration: BoxDecoration(
@@ -316,23 +316,49 @@ class Beranda extends StatelessWidget {
                                         Colors.black.withOpacity(.2)
                                       ]),
                                 ),
-                                child: Align(
-                                  alignment: Alignment.bottomLeft,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(15.0),
-                                    child: Text(
-                                      'Data Obat',
-                                      style: GoogleFonts.nunito(
-                                        textStyle: const TextStyle(
-                                          color: Colors.white,
-                                          letterSpacing: .5,
+                                child: Stack(
+                                  children: [
+                                    Align(
+                                      alignment: Alignment.bottomLeft,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(15.0),
+                                        child: Text(
+                                          'Data Obat',
+                                          style: GoogleFonts.nunito(
+                                            textStyle: const TextStyle(
+                                              color: Colors.white,
+                                              letterSpacing: .5,
+                                            ),
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                         ),
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                  ),
-                                ),
+                                    Align(
+                                      alignment: Alignment.topRight,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(12.0),
+                                        child: Container(
+                                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                                          decoration: BoxDecoration(
+                                            color: Colors.red.withOpacity(0.8),
+                                            borderRadius: BorderRadius.circular(20), // Adjust the radius for capsule shape
+                                          ),
+                                          child: const Text(
+                                            "NEW",
+                                            style: TextStyle(
+                                              letterSpacing: .5,
+                                              fontSize: 10,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                )
                               ),
                             ),
                           ),
