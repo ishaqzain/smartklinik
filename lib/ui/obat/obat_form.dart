@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smartklinik/model/obat.dart';
 import 'package:smartklinik/service/obat_service.dart';
-import 'package:smartklinik/ui/obat/obat_detail.dart';
+import 'package:smartklinik/ui/obat/obat_page.dart';
 
 class ObatForm extends StatefulWidget {
   const ObatForm({super.key});
@@ -68,10 +68,17 @@ class _ObatFormState extends State<ObatForm> {
               harga: _harga.text,
               stock: _stock.text,
           );
+          // await ObatService().simpan(obat).then((value) {
+          //   Navigator.pushReplacement(context,
+          //       MaterialPageRoute(builder: (context) =>
+          //           ObatDetail(obat: value)));
+          //   print(value);
+          // });
           await ObatService().simpan(obat).then((value) {
             Navigator.pushReplacement(context,
                 MaterialPageRoute(builder: (context) =>
-                    ObatDetail(obat: value)));
+                const ObatPage())
+            );
             print(value);
           });
         },

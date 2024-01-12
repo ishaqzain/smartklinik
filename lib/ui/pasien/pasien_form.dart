@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smartklinik/model/pasien.dart';
 import 'package:smartklinik/service/pasien_service.dart';
-import 'package:smartklinik/ui/pasien/pasien_detail.dart';
+import 'package:smartklinik/ui/pasien/pasien_page.dart';
 
 class PasienForm extends StatefulWidget {
   const PasienForm({super.key});
@@ -79,7 +79,8 @@ class _PasienFormState extends State<PasienForm> {
           await PasienService().simpan(pasien).then((value) {
             Navigator.pushReplacement(context,
               MaterialPageRoute(builder: (context) =>
-                PasienDetail(pasien: value)));
+                const PasienPage())
+            );
             print(value);
           });
         },
