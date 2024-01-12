@@ -23,9 +23,22 @@ class _PoliFormState extends State<PoliForm> {
           key: _formKey,
           child: Column(
             children: [
-             _fieldNamePoli("Nama Poli", _namaPoliCtrl),
-              const SizedBox(height: 20,),
-              _tombolSimpan()
+              SizedBox(
+                height: 170,
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0), // Adjust the radius as needed
+                  ),
+                  child: ListView(
+                    padding: const EdgeInsets.all(16),
+                    children: [
+                      _fieldNamePoli("Nama Poli", _namaPoliCtrl),
+                      const SizedBox(height: 20,),
+                      _tombolSimpan()
+                    ],
+                  ),
+                ),
+              )
             ],
           ),
         ),

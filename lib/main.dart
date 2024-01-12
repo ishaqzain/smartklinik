@@ -29,6 +29,11 @@ class MyApp extends StatelessWidget {
           color: Colors.teal, // Set the background color of the app bar
           elevation: 3, // Set the elevation (shadow) of the app bar
         ),
+        buttonTheme: ButtonThemeData(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.0), // Set the default button radius
+          ),
+        ),
         textTheme: GoogleFonts.nunitoTextTheme().copyWith(
           labelLarge: GoogleFonts.nunito(
             textStyle: const TextStyle(

@@ -51,19 +51,32 @@ class _PegawaiUpdateFormState extends State<PegawaiUpdateForm> {
             key: _formKey,
             child: Column(
               children: [
-                _fieldNamePoli("NIP", _nipCtrl),
-                const SizedBox(height: 16,),
-                _fieldNamePoli("Nama", _namaCtrl),
-                const SizedBox(height: 16,),
-                _fieldNamePoli("Tanggal Lahir", _tglLahirCtrl),
-                const SizedBox(height: 16,),
-                _fieldNamePoli("No Telepon", _noTlpCtrl),
-                const SizedBox(height: 16,),
-                _fieldNamePoli("Email", _emailCtrl),
-                const SizedBox(height: 16,),
-                _fieldNamePoli("Password", _passCtrl),
-                const SizedBox(height: 16,),
-                _tombolSimpan()
+                SizedBox(
+                  height: 560,
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0), // Adjust the radius as needed
+                    ),
+                    child: ListView(
+                      padding: const EdgeInsets.all(16),
+                      children: [
+                        _fieldNamePoli("NIP", _nipCtrl),
+                        const SizedBox(height: 16,),
+                        _fieldNamePoli("Nama", _namaCtrl),
+                        const SizedBox(height: 16,),
+                        _fieldNamePoli("Tanggal Lahir", _tglLahirCtrl),
+                        const SizedBox(height: 16,),
+                        _fieldNamePoli("No Telepon", _noTlpCtrl),
+                        const SizedBox(height: 16,),
+                        _fieldNamePoli("Email", _emailCtrl),
+                        const SizedBox(height: 16,),
+                        _fieldNamePoli("Password", _passCtrl),
+                        const SizedBox(height: 16,),
+                        _tombolSimpan()
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

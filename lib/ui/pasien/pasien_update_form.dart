@@ -49,17 +49,30 @@ class _PasienUpdateForm extends State<PasienUpdateForm> {
             key: _formKey,
             child: Column(
               children: [
-                _fieldName("No RM", _noRmCtrl),
-                const SizedBox(height: 16,),
-                _fieldName("Nama", _namaCtrl),
-                const SizedBox(height: 16,),
-                _fieldName("Tanggal Lahir", _tglLahirCtrl),
-                const SizedBox(height: 16,),
-                _fieldName("No Telepon", _noTlpCtrl),
-                const SizedBox(height: 16,),
-                _fieldName("Alamat", _alamatCtrl),
-                const SizedBox(height: 16,),
-                _tombolSimpan()
+                SizedBox(
+                  height: 490,
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0), // Adjust the radius as needed
+                    ),
+                    child: ListView(
+                      padding: const EdgeInsets.all(16),
+                      children: [
+                        _fieldName("No RM", _noRmCtrl),
+                        const SizedBox(height: 16,),
+                        _fieldName("Nama", _namaCtrl),
+                        const SizedBox(height: 16,),
+                        _fieldName("Tanggal Lahir", _tglLahirCtrl),
+                        const SizedBox(height: 16,),
+                        _fieldName("No Telepon", _noTlpCtrl),
+                        const SizedBox(height: 16,),
+                        _fieldName("Alamat", _alamatCtrl),
+                        const SizedBox(height: 16,),
+                        _tombolSimpan()
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

@@ -24,7 +24,6 @@ class _PoliUpdateFormState extends State<PoliUpdateForm> {
   final _formKey = GlobalKey<FormState>();
   final _namaPoliCtrl = TextEditingController();
 
-  @override
   void iniSate() {
     super.initState();
     setState(() {
@@ -42,9 +41,22 @@ class _PoliUpdateFormState extends State<PoliUpdateForm> {
           key: _formKey,
           child: Column(
             children: [
-              _fieldNamaPoli("Nama Poli", _namaPoliCtrl),
-              const SizedBox(height: 20,),
-              _tombolSimpan()
+              SizedBox(
+                height: 170,
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0), // Adjust the radius as needed
+                  ),
+                  child: ListView(
+                    padding: const EdgeInsets.all(16),
+                    children: [
+                      _fieldNamaPoli("Nama Poli", _namaPoliCtrl),
+                      const SizedBox(height: 20,),
+                      _tombolSimpan()
+                    ],
+                  ),
+                ),
+              )
             ],
           )
         ),
