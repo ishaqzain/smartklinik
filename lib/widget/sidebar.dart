@@ -5,6 +5,8 @@ import 'package:smartklinik/ui/pasien/pasien_page.dart';
 import 'package:smartklinik/ui/pegawai/pegawai_page.dart';
 import 'package:smartklinik/ui/poli/poli_page.dart';
 import 'package:smartklinik/ui/obat/obat_page.dart';
+import 'package:smartklinik/helpers/user_info.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Sidebar extends StatelessWidget {
   const Sidebar({super.key});
@@ -16,12 +18,53 @@ class Sidebar extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           // logo user
-          const UserAccountsDrawerHeader(
-            decoration: BoxDecoration(
+          UserAccountsDrawerHeader(
+            decoration: const BoxDecoration(
               color: Colors.teal, // Set the background color here
             ),
-            accountName: Text('Admin'),
-            accountEmail: Text('admin@admin.com')),
+            accountName: FutureBuilder(
+              future: UserInfo().getUserName(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const CircularProgressIndicator();
+                } else if (snapshot.hasError) {
+                  return Text('Error: ${snapshot.error}');
+                } else {
+                  String username = snapshot.data ?? 'Unknown User';
+                  return Text(
+                    username,
+                    style: GoogleFonts.manrope(
+                      textStyle: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold
+                      ),
+                      fontSize: 20,
+                    ),
+                  );
+                }
+              },
+            ),
+            accountEmail: FutureBuilder(
+              future: UserInfo().getEmail(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const CircularProgressIndicator();
+                } else if (snapshot.hasError) {
+                  return Text('Error: ${snapshot.error}');
+                } else {
+                  String email = snapshot.data ?? 'Unknown Email';
+                  return Text(
+                      email,
+                      style: GoogleFonts.nunito(
+                      textStyle: const TextStyle(
+                        color: Colors.white,
+                      ),
+                      fontSize: 14,),
+                  );
+                }
+              },
+            ),
+          ),
           // home
           ListTile(
             leading: const Icon(Icons.home) ,
