@@ -3,6 +3,7 @@ import 'package:smartklinik/model/poli.dart';
 import 'package:smartklinik/ui/poli/poli_page.dart';
 import 'package:smartklinik/ui/poli/poli_update_form.dart';
 import 'package:smartklinik/service/poli_service.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class PoliDetail extends StatefulWidget {
   final Poli poli;
@@ -39,16 +40,40 @@ class _PoliDetailState extends State<PoliDetail> {
             }
             return Column(
               children: [
-                SizedBox(height: 20,),
-                Text("Nama Poli : ${snapshot.data.namaPoli} ",
-                  style: TextStyle(fontSize: 20),),
-                SizedBox(height: 20,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    _tombolUbah(),
-                    _tombolHapus()
-                  ],
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  height: 200,
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0), // Adjust the radius as needed
+                    ),
+                    child: ListView(
+                      padding: const EdgeInsets.all(16),
+                      children: [
+                        Text("Nama Poli",
+                          style: const TextStyle(fontSize: 14),
+                        ),
+                        Text(
+                          "${snapshot.data.namaPoli}",
+                          style: GoogleFonts.manrope(
+                            textStyle: const TextStyle(
+                              letterSpacing: .5,
+                            ),
+                            fontSize: 24,
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
+                        const SizedBox(height: 20,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            _tombolUbah(),
+                            _tombolHapus()
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
                 )
               ],
             );
@@ -68,8 +93,13 @@ class _PoliDetailState extends State<PoliDetail> {
                     PoliUpdateForm(poli: snapshot.data)));
           },
           style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.green),
-          child: const Text('Ubah'),
+            backgroundColor: Colors.teal.shade600,
+            minimumSize: const Size(100.0, 40.0),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8.0), // Adjust the radius as needed
+            ),
+          ),
+          child: const Text('Edit'),
         )
     );
   }
@@ -103,15 +133,19 @@ class _PoliDetailState extends State<PoliDetail> {
                 },
                 child: Text("Tidak"),
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green)
+                    backgroundColor: Colors.teal)
             )
           ],
         );
         showDialog(context: context, builder: (context) => alertDialog);
       },
-      child: const Text('Hapus'),
+      child: const Text('Delete'),
       style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.red),
+          minimumSize: const Size(100.0, 40.0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.0), // Adjust the radius as needed
+          ),
+          backgroundColor: Colors.red.shade900),
     );
   }
 }

@@ -30,6 +30,13 @@ class MyApp extends StatelessWidget {
           elevation: 3, // Set the elevation (shadow) of the app bar
         ),
         textTheme: GoogleFonts.nunitoTextTheme().copyWith(
+          labelLarge: GoogleFonts.nunito(
+            textStyle: const TextStyle(
+              fontSize: 14.0,
+              fontWeight: FontWeight.bold,
+              // Add other styling properties as needed
+            ),
+          ),
           titleLarge: GoogleFonts.nunito(
             textStyle: const TextStyle(
               fontSize: 18.0,

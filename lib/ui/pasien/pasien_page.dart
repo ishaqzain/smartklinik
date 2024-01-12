@@ -21,24 +21,37 @@ class _PasienPageState extends State<PasienPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: FloatingActionButton.extended(
+        backgroundColor: Colors.teal,
+        foregroundColor: Colors.white,
+        onPressed: (){
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const PasienForm())
+          );
+        },
+        icon: const Icon(Icons.add),
+        label: const Text('Data Pasien'),
+        extendedPadding: const EdgeInsets.all(20.0),
+      ),
       drawer: const Sidebar(),
       appBar: AppBar(
         title: const Text("Data Pasien"),
-        actions: <Widget>[
-          Padding(
-              padding: const EdgeInsets.only(right: 16.0),
-              child: GestureDetector(
-                onTap: (){
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const PasienForm())
-                  );
-                },
-                child: const Icon(
-                  Icons.add,
-                ),
-              )
-          ),
-        ],
+        // actions: <Widget>[
+        //   Padding(
+        //       padding: const EdgeInsets.only(right: 16.0),
+        //       child: GestureDetector(
+        //         onTap: (){
+        //           Navigator.push(context,
+        //               MaterialPageRoute(builder: (context) => const PasienForm())
+        //           );
+        //         },
+        //         child: const Icon(
+        //           Icons.add,
+        //         ),
+        //       )
+        //   ),
+        // ],
       ),
       body: StreamBuilder(
           stream: getList(),

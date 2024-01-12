@@ -21,25 +21,38 @@ class _PoliPageState extends State<PoliPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: FloatingActionButton.extended(
+        backgroundColor: Colors.teal,
+        foregroundColor: Colors.white,
+        onPressed: (){
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const PoliForm())
+          );
+        },
+        icon: const Icon(Icons.add),
+        label: const Text('Data Poli'),
+        extendedPadding: const EdgeInsets.all(20.0),
+      ),
       drawer: const Sidebar(),
       appBar: AppBar(
         backgroundColor: Colors.teal,
         title: const Text("Data Poli"),
-        actions: <Widget>[
-          Padding(
-              padding: const EdgeInsets.only(right: 16.0),
-              child: GestureDetector(
-                onTap: (){
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const PoliForm())
-                  );
-                },
-                child: const Icon(
-                  Icons.add,
-                ),
-              )
-          ),
-        ],
+        // actions: <Widget>[
+        //   Padding(
+        //       padding: const EdgeInsets.only(right: 16.0),
+        //       child: GestureDetector(
+        //         onTap: (){
+        //           Navigator.push(context,
+        //               MaterialPageRoute(builder: (context) => const PoliForm())
+        //           );
+        //         },
+        //         child: const Icon(
+        //           Icons.add,
+        //         ),
+        //       )
+        //   ),
+        // ],
       ),
       body: StreamBuilder(
           stream: getList(),

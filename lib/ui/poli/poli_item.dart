@@ -12,7 +12,8 @@ class PoliItem extends StatelessWidget {
     return GestureDetector(
       child: Card(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8.0), // Adjust the radius as needed
+          borderRadius:
+              BorderRadius.circular(8.0), // Adjust the radius as needed
         ),
         child: ListTile(
           title: Text(poli.namaPoli),
