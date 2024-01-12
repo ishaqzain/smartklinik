@@ -11,6 +11,14 @@ class Beranda extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton.extended(
+        backgroundColor: Colors.teal,
+        foregroundColor: Colors.white,
+        onPressed: (){},
+        icon: const Icon(Icons.chat_bubble),
+        label: const Text('Bantuan'),
+        extendedPadding: const EdgeInsets.all(20.0),
+      ),
       drawer: const Sidebar(),
       appBar: AppBar(
         elevation: 0,
@@ -312,7 +320,7 @@ class Beranda extends StatelessWidget {
                                   child: Padding(
                                     padding: const EdgeInsets.all(15.0),
                                     child: Text(
-                                      'Data Obat',
+                                      'Jadwal Klinik',
                                       style: GoogleFonts.nunito(
                                         textStyle: const TextStyle(
                                           color: Colors.white,

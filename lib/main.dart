@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: token == null ? const Login() : const Beranda(),
       theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
         appBarTheme: const AppBarTheme(
           color: Colors.teal, // Set the background color of the app bar
           elevation: 3, // Set the elevation (shadow) of the app bar
