@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:smartklinik/ui/poli/poli_page.dart';
 import 'package:smartklinik/ui/pegawai/pegawai_page.dart';
 import 'package:smartklinik/ui/pasien/pasien_page.dart';
+import 'package:smartklinik/ui/obat/obat_page.dart';
 
 class Beranda extends StatelessWidget {
   const Beranda({super.key});
@@ -287,7 +288,7 @@ class Beranda extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const PoliPage()));
+                                      builder: (context) => const ObatPage()));
                             },
                             child: Container(
                               decoration: BoxDecoration(
@@ -320,7 +321,7 @@ class Beranda extends StatelessWidget {
                                   child: Padding(
                                     padding: const EdgeInsets.all(15.0),
                                     child: Text(
-                                      'Jadwal Klinik',
+                                      'Data Obat',
                                       style: GoogleFonts.nunito(
                                         textStyle: const TextStyle(
                                           color: Colors.white,

@@ -4,6 +4,7 @@ import 'package:smartklinik/ui/login.dart';
 import 'package:smartklinik/ui/pasien/pasien_page.dart';
 import 'package:smartklinik/ui/pegawai/pegawai_page.dart';
 import 'package:smartklinik/ui/poli/poli_page.dart';
+import 'package:smartklinik/ui/obat/obat_page.dart';
 
 class Sidebar extends StatelessWidget {
   const Sidebar({super.key});
@@ -64,6 +65,18 @@ class Sidebar extends StatelessWidget {
                 context, MaterialPageRoute(
                   builder:(context) => const PegawaiPage()
                 )
+              );
+            },
+          ),
+          // Obat
+          ListTile(
+            leading: const Icon(Icons.medical_information) ,
+            title: const Text('Obat'),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(
+                  builder:(context) => const ObatPage()
+              )
               );
             },
           ),
