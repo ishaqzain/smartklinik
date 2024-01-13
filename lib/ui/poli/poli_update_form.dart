@@ -24,7 +24,8 @@ class _PoliUpdateFormState extends State<PoliUpdateForm> {
   final _formKey = GlobalKey<FormState>();
   final _namaPoliCtrl = TextEditingController();
 
-  void iniSate() {
+  @override
+  void initState() {
     super.initState();
     setState(() {
       _namaPoliCtrl.text = widget.poli.namaPoli;

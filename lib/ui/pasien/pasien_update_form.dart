@@ -28,7 +28,8 @@ class _PasienUpdateForm extends State<PasienUpdateForm> {
   final _noTlpCtrl = TextEditingController();
   final _alamatCtrl = TextEditingController();
 
-  void iniSate() {
+  @override
+  void initState() {
     super.initState();
     setState(() {
       _noRmCtrl.text = widget.pasien.nomorRm;

@@ -7,6 +7,7 @@ class PegawaiUpdateForm extends StatefulWidget {
   final Pegawai pegawai;
   const PegawaiUpdateForm({super.key, required this.pegawai});
 
+
   @override
   State<PegawaiUpdateForm> createState() => _PegawaiUpdateFormState();
 }
@@ -29,7 +30,8 @@ class _PegawaiUpdateFormState extends State<PegawaiUpdateForm> {
   final _emailCtrl = TextEditingController();
   final _passCtrl = TextEditingController();
 
-  void iniSate() {
+  @override
+  void initState() {
     super.initState();
     setState(() {
       _nipCtrl.text = widget.pegawai.nip;
