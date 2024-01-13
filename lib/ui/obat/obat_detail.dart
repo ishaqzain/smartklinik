@@ -24,7 +24,18 @@ class _ObatDetailState extends State<ObatDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Detail Obat"),),
+      appBar: AppBar(
+        title: const Text("Detail Obat"),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back), // You can use any icon you prefer
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const ObatPage()),
+            );
+          },
+        ),
+      ),
       body: StreamBuilder(
           stream: getData(),
           builder: (context, AsyncSnapshot snapshot) {

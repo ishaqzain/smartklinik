@@ -24,7 +24,18 @@ class _PoliDetailState extends State<PoliDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Detail Poli"),),
+      appBar: AppBar(
+        title: const Text("Detail Poli"),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back), // You can use any icon you prefer
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const PoliPage()),
+            );
+          },
+        ),
+      ),
       body: StreamBuilder(
           stream: getData(),
           builder: (context, AsyncSnapshot snapshot) {
@@ -32,12 +43,12 @@ class _PoliDetailState extends State<PoliDetail> {
               return Text(snapshot.error.toString());
             }
             if(snapshot.connectionState != ConnectionState.done){
-              return Center(
+              return const Center(
                 child: CircularProgressIndicator(),
               );
             }
             if(!snapshot.hasData && snapshot.connectionState == ConnectionState.done ){
-              return Text('Data Tidak Ditemukan');
+              return const Text('Data Tidak Ditemukan');
             }
             return Column(
               children: [
@@ -51,8 +62,8 @@ class _PoliDetailState extends State<PoliDetail> {
                     child: ListView(
                       padding: const EdgeInsets.all(16),
                       children: [
-                        Text("Nama Poli",
-                          style: const TextStyle(fontSize: 14),
+                        const Text("Nama Poli",
+                          style: TextStyle(fontSize: 14),
                         ),
                         Text(
                           "${snapshot.data.namaPoli}",

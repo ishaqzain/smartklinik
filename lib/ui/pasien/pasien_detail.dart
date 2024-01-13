@@ -24,7 +24,18 @@ class _PasienDetailState extends State<PasienDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Detail Pasien"),),
+      appBar: AppBar(
+        title: const Text("Detail Pasien"),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back), // You can use any icon you prefer
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const PasienPage()),
+            );
+          },
+        ),
+      ),
       body: StreamBuilder(
           stream: getData(),
           builder: (context, AsyncSnapshot snapshot) {

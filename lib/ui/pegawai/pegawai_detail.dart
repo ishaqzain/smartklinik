@@ -24,7 +24,18 @@ class _PegawaiDetailState extends State<PegawaiDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Detail Pegawai"),),
+      appBar: AppBar(
+        title: const Text("Detail Pegawai"),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back), // You can use any icon you prefer
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const PegawaiPage()),
+            );
+          },
+        ),
+      ),
       body: StreamBuilder(
           stream: getData(),
           builder: (context, AsyncSnapshot snapshot) {
