@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smartklinik/model/pasien.dart';
 import 'package:smartklinik/ui/pasien/pasien_detail.dart';
 import 'package:smartklinik/service/pasien_service.dart';
+import 'package:smartklinik/utils/snackbar_utils.dart';
 
 class PasienUpdateForm extends StatefulWidget {
   final Pasien pasien;
@@ -105,7 +106,10 @@ class _PasienUpdateForm extends State<PasienUpdateForm> {
             Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => PasienDetail(pasien: value)));
+                    builder: (context) => PasienDetail(pasien: value)
+                )
+            );
+            SnackbarUtils.showSnackbar(context, 'Data berhasil diubah');
           });
         },
         child: const Text("Simpan Perubahan")

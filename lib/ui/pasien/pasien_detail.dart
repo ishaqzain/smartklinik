@@ -4,6 +4,7 @@ import 'package:smartklinik/ui/pasien/pasien_page.dart';
 import 'package:smartklinik/ui/pasien/pasien_update_form.dart';
 import 'package:smartklinik/service/pasien_service.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smartklinik/utils/snackbar_utils.dart';
 
 class PasienDetail extends StatefulWidget {
   final Pasien pasien;
@@ -187,6 +188,7 @@ class _PasienDetailState extends State<PasienDetail> {
                         Navigator.pop(context);
                         Navigator.pushReplacement(context,
                             MaterialPageRoute(builder: ( context ) => PasienPage()));
+                        SnackbarUtils.showSnackbar(context, 'Data Pasien ${snapshot.data.nama} berhasil dihapus');
                       });
                     },
                     child: Text("YA"),

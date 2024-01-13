@@ -99,7 +99,7 @@ class _ObatUpdateForm extends State<ObatUpdateForm> {
               builder: (context) => ObatDetail(obat: value),
             ),
           );
-          SnackbarUtils.showSnackbar(context, 'Data Obat berhasil diubah');
+          SnackbarUtils.showSnackbar(context, 'Data berhasil diubah');
         });
       },
       child: const Text("Simpan Perubahan"),

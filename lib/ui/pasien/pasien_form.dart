@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smartklinik/model/pasien.dart';
 import 'package:smartklinik/service/pasien_service.dart';
 import 'package:smartklinik/ui/pasien/pasien_page.dart';
+import 'package:smartklinik/utils/snackbar_utils.dart';
 
 class PasienForm extends StatefulWidget {
   const PasienForm({super.key});
@@ -81,6 +82,7 @@ class _PasienFormState extends State<PasienForm> {
               MaterialPageRoute(builder: (context) =>
                 const PasienPage())
             );
+            SnackbarUtils.showSnackbar(context, 'Data Pasien ${_namaCtrl.text} berhasil ditambahkan');
             print(value);
           });
         },
