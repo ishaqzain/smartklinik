@@ -37,21 +37,6 @@ class _PasienPageState extends State<PasienPage> {
       drawer: const Sidebar(),
       appBar: AppBar(
         title: const Text("Data Pasien"),
-        // actions: <Widget>[
-        //   Padding(
-        //       padding: const EdgeInsets.only(right: 16.0),
-        //       child: GestureDetector(
-        //         onTap: (){
-        //           Navigator.push(context,
-        //               MaterialPageRoute(builder: (context) => const PasienForm())
-        //           );
-        //         },
-        //         child: const Icon(
-        //           Icons.add,
-        //         ),
-        //       )
-        //   ),
-        // ],
       ),
       body: StreamBuilder(
           stream: getList(),

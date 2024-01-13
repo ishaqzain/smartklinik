@@ -38,21 +38,6 @@ class _PoliPageState extends State<PoliPage> {
       appBar: AppBar(
         backgroundColor: Colors.teal,
         title: const Text("Data Poli"),
-        // actions: <Widget>[
-        //   Padding(
-        //       padding: const EdgeInsets.only(right: 16.0),
-        //       child: GestureDetector(
-        //         onTap: (){
-        //           Navigator.push(context,
-        //               MaterialPageRoute(builder: (context) => const PoliForm())
-        //           );
-        //         },
-        //         child: const Icon(
-        //           Icons.add,
-        //         ),
-        //       )
-        //   ),
-        // ],
       ),
       body: StreamBuilder(
           stream: getList(),
