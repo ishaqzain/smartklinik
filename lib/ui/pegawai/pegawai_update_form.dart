@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smartklinik/model/pegawai.dart';
 import 'package:smartklinik/ui/pegawai/pegawai_detail.dart';
 import 'package:smartklinik/service/pegawai_service.dart';
+import 'package:smartklinik/utils/snackbar_utils.dart';
 
 class PegawaiUpdateForm extends StatefulWidget {
   final Pegawai pegawai;
@@ -90,6 +91,7 @@ class _PegawaiUpdateFormState extends State<PegawaiUpdateForm> {
     return TextField(
       decoration: InputDecoration(labelText: label),
       controller: Ctrl,
+      obscureText: label.toLowerCase().contains('password'),
     );
   }
 
@@ -111,7 +113,10 @@ class _PegawaiUpdateFormState extends State<PegawaiUpdateForm> {
             Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => PegawaiDetail(pegawai: value)));
+                    builder: (context) => PegawaiDetail(pegawai: value)
+                )
+            );
+            SnackbarUtils.showSnackbar(context, 'Data berhasil diubah');
           });
         },
         child: const Text("Simpan Perubahan")

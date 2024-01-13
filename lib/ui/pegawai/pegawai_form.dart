@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smartklinik/model/pegawai.dart';
 import 'package:smartklinik/service/pegawai_service.dart';
 import 'package:smartklinik/ui/pegawai/pegawai_page.dart';
+import 'package:smartklinik/utils/snackbar_utils.dart';
 
 class PegawaiForm extends StatefulWidget {
   const PegawaiForm({super.key});
@@ -80,17 +81,12 @@ class _PegawaiFormState extends State<PegawaiForm> {
             email: _emailCtrl.text,
             password: _passCtrl.text
           );
-          // await PegawaiService().simpan(pegawai).then((value) {
-          //   Navigator.pushReplacement(context,
-          //       MaterialPageRoute(builder: (context) =>
-          //           PegawaiDetail(pegawai: value)));
-          //   print(value);
-          // });
           await PegawaiService().simpan(pegawai).then((value) {
             Navigator.pushReplacement(context,
                 MaterialPageRoute(builder: (context) =>
                 const PegawaiPage())
             );
+            SnackbarUtils.showSnackbar(context, 'Data Pegawai ${_namaCtrl.text} berhasil ditambahkan');
             print(value);
           });
         },

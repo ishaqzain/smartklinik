@@ -4,6 +4,7 @@ import 'package:smartklinik/ui/pegawai/pegawai_page.dart';
 import 'package:smartklinik/ui/pegawai/pegawai_update_form.dart';
 import 'package:smartklinik/service/pegawai_service.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smartklinik/utils/snackbar_utils.dart';
 
 class PegawaiDetail extends StatefulWidget {
   final Pegawai pegawai;
@@ -202,6 +203,7 @@ class _PegawaiDetailState extends State<PegawaiDetail> {
                         Navigator.pop(context);
                         Navigator.pushReplacement(context,
                             MaterialPageRoute(builder: ( context ) => PegawaiPage()));
+                        SnackbarUtils.showSnackbar(context, 'Data ${snapshot.data.nama} berhasil dihapus');
                       });
                     },
                     child: Text("YA"),
