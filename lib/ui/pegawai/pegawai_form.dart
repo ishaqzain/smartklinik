@@ -66,6 +66,7 @@ class _PegawaiFormState extends State<PegawaiForm> {
     return TextField(
       decoration: InputDecoration(labelText: label),
       controller: Ctrl,
+      obscureText: label.toLowerCase().contains('password'),
     );
   }
 

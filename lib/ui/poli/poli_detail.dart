@@ -4,6 +4,7 @@ import 'package:smartklinik/ui/poli/poli_page.dart';
 import 'package:smartklinik/ui/poli/poli_update_form.dart';
 import 'package:smartklinik/service/poli_service.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smartklinik/utils/snackbar_utils.dart';
 
 class PoliDetail extends StatefulWidget {
   final Poli poli;
@@ -120,6 +121,7 @@ class _PoliDetailState extends State<PoliDetail> {
                         Navigator.pop(context);
                         Navigator.pushReplacement(context,
                             MaterialPageRoute(builder: ( context ) => PoliPage()));
+                        SnackbarUtils.showSnackbar(context, 'Data ${snapshot.data.namaPoli} berhasil dihapus');
                       });
                     },
                     child: Text("YA"),

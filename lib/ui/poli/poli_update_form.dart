@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smartklinik/model/poli.dart';
 import 'package:smartklinik/ui/poli/poli_detail.dart';
 import 'package:smartklinik/service/poli_service.dart';
+import 'package:smartklinik/utils/snackbar_utils.dart';
 
 class PoliUpdateForm extends StatefulWidget {
   final Poli poli;
@@ -85,7 +86,10 @@ class _PoliUpdateFormState extends State<PoliUpdateForm> {
             Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => PoliDetail(poli: value)));
+                    builder: (context) => PoliDetail(poli: value)
+                )
+            );
+            SnackbarUtils.showSnackbar(context, 'Data berhasil diubah');
           });
         },
         child: const Text("Simpan Perubahan"));

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smartklinik/model/poli.dart';
 import 'package:smartklinik/service/poli_service.dart';
 import 'package:smartklinik/ui/poli/poli_page.dart';
+import 'package:smartklinik/utils/snackbar_utils.dart';
 
 class PoliForm extends StatefulWidget {
   const PoliForm({super.key});
@@ -69,6 +70,7 @@ class _PoliFormState extends State<PoliForm> {
               MaterialPageRoute(builder: (context) =>
               const PoliPage())
           );
+          SnackbarUtils.showSnackbar(context, 'Data ${_namaPoliCtrl.text} berhasil ditambahkan');
           print(value);
         });
       },
