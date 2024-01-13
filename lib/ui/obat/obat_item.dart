@@ -15,7 +15,7 @@ class ObatItem extends StatelessWidget {
         ),
         child: ListTile(
           title: Text(obat.merek),
-          subtitle: Text(obat.stock),
+          subtitle: Text('Stock: ${obat.stock}'),
         ),
       ),
       onTap: (){
