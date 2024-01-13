@@ -6,6 +6,7 @@ import 'package:smartklinik/ui/pegawai/pegawai_page.dart';
 import 'package:smartklinik/ui/pasien/pasien_page.dart';
 import 'package:smartklinik/ui/obat/obat_page.dart';
 import 'package:smartklinik/helpers/user_info.dart';
+import 'package:smartklinik/utils/snackbar_utils.dart';
 
 class Beranda extends StatelessWidget {
   const Beranda({super.key});
@@ -16,7 +17,9 @@ class Beranda extends StatelessWidget {
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: Colors.teal,
         foregroundColor: Colors.white,
-        onPressed: (){},
+        onPressed: (){
+          SnackbarUtils.showSnackbar(context, 'Maaf fitur "Bantuan" belum tersedia');
+        },
         icon: const Icon(Icons.chat_bubble),
         label: const Text('Bantuan'),
         extendedPadding: const EdgeInsets.all(20.0),

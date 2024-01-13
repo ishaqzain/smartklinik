@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smartklinik/model/obat.dart';
 import 'package:smartklinik/service/obat_service.dart';
 import 'package:smartklinik/ui/obat/obat_page.dart';
+import 'package:smartklinik/utils/snackbar_utils.dart';
 
 class ObatForm extends StatefulWidget {
   const ObatForm({super.key});
@@ -75,10 +76,12 @@ class _ObatFormState extends State<ObatForm> {
           //   print(value);
           // });
           await ObatService().simpan(obat).then((value) {
+
             Navigator.pushReplacement(context,
                 MaterialPageRoute(builder: (context) =>
                 const ObatPage())
             );
+            SnackbarUtils.showSnackbar(context, 'Data Obat ${_merek.text} berhasil ditambahkan');
             print(value);
           });
         },

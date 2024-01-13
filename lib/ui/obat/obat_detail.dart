@@ -4,6 +4,7 @@ import 'package:smartklinik/ui/obat/obat_page.dart';
 import 'package:smartklinik/ui/obat/obat_update_form.dart';
 import 'package:smartklinik/service/obat_service.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smartklinik/utils/snackbar_utils.dart';
 
 class ObatDetail extends StatefulWidget {
   final Obat obat;
@@ -156,7 +157,8 @@ class _ObatDetailState extends State<ObatDetail> {
                       await ObatService().hapus(snapshot.data).then((value){
                         Navigator.pop(context);
                         Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: ( context ) => ObatPage()));
+                            MaterialPageRoute(builder: ( context ) => const ObatPage()));
+                        SnackbarUtils.showSnackbar(context, 'Data Obat ${snapshot.data.merek} berhasil dihapus');
                       });
                     },
                     child: Text("YA"),

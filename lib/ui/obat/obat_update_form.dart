@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smartklinik/model/obat.dart';
 import 'package:smartklinik/ui/obat/obat_detail.dart';
 import 'package:smartklinik/service/obat_service.dart';
+import 'package:smartklinik/utils/snackbar_utils.dart';
 
 class ObatUpdateForm extends StatefulWidget {
   final Obat obat;
@@ -94,7 +95,9 @@ class _ObatUpdateForm extends State<ObatUpdateForm> {
             Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => ObatDetail(obat: value)));
+                    builder: (context) => ObatDetail(obat: value))
+            );
+            SnackbarUtils.showSnackbar(context, 'Data Obat berhasil diubah');
           });
         },
         child: const Text("Simpan Perubahan")
