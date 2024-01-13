@@ -85,8 +85,8 @@ class _LoginState extends State<Login> {
   Widget _usernameTextField() {
     return TextFormField(
       decoration: InputDecoration(
-        labelText: "Username",
-        hintText: 'Username or e-mail',
+        labelText: "Email",
+        hintText: 'Type your e-mail',
         labelStyle: TextStyle(
           color: Colors.grey.shade600,
           fontSize: 14.0,
